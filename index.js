@@ -2,7 +2,7 @@
 const express = require('express')
 const app = express()
 const args = require("minimist")(process.argv.slice(2))
-const db = require("./database.js")
+const db = require("./src/services/database.js")
 const fs = require('fs')
 const morgan = require('morgan')
 //Command Line Argument for port here
@@ -48,11 +48,13 @@ const server = app.listen(port, () => {
 if (args.log){
   
 } else{
-  accessLog = fs.createWriteStream('access.log', { flags: 'a'})
+  accessLog = fs.createWriteStream('./data/log/access.log', { flags: 'a'})
   app.use(morgan('combined', {stream: accessLog}))
 }
-
-
+const cors = require('cors')
+app.use(cors())
+app.use(express.json())
+app.use(express.static('./public'))
 app.use((req, res, next) => {
   const stmt = db.prepare('INSERT INTO accesslog (remoteaddr, remoteuser, time, method, url, protocol, httpversion, status, referer, useragent) VALUES (?,?,?,?,?,?,?,?,?,?)')
   const info = stmt.run(req.ip, req.user, Date.now(), req.method, req.url, req.protocol, req.httpVersion, res.statusCode, req.header['referer'], req.headers['user-agent'])
