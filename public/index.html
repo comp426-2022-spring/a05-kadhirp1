@@ -26,24 +26,25 @@
 	<meta name="theme-color" content="#ffffff">
   </head>
   <body>
-    <p>Click the HOME button to get to the HOME page</p>
+    
     <nav>
-      <button id="homenav">Home</button>
-      <button id="singlenav">Flip one coin</button>
-      <button id="multinav">Flip multiple coins</button>
-      <button id="guessnav">Guess the result</button>
+      <button id="homenav" onclick="homeNav()" class="active">Home</button>
+      <button id="singlenav" onclick="singleNav()">Flip one coin</button>
+      <button id="multinav" onclick="multiNav()">Flip multiple coins</button>
+      <button id="guessnav" onclick="guessNav()">Guess the result</button>
     </nav>
     <div id="home">
-      <p>Welcome PAGE</p>
+      <h1>You want to flip a coin?</h1>
+      <p>Click the buttons above to flip a coin, flip many coins, or guess a coin flip. 
     </div>    
     <div id="single" class="hidden">
-      
+      <h1>Flip da coin</h1>
     </div>
     <div id="multi" class="hidden">
-      
+      <h1>Flip multiple coins</h1>
     </div>
     <div id="guess" class="hidden">
-      
+      <h1>Guess a coin flip</h1>
     </div>
 	<script src="main.js"></script>
   </body>

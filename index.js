@@ -43,7 +43,7 @@ const server = app.listen(port, () => {
     //Same asconsole.log('App is running on port %PORT%'.replace('$PORT$', port))
 })
 
-
+app.use(express.static('./public'))
 
 if (args.log){
   
