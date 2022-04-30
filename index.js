@@ -45,11 +45,19 @@ const server = app.listen(port, () => {
 
 app.use(express.static('./public'))
 
-if (args.log){
-  
-} else{
-  accessLog = fs.createWriteStream('./data/log/access.log', { flags: 'a'})
-  app.use(morgan('combined', {stream: accessLog}))
+if (args.log == 'false') {
+    console.log("NOTICE: not creating file access.log")
+} else {
+// Use morgan for logging to files
+    const logdir = './log/';
+
+    if (!fs.existsSync(logdir)){
+        fs.mkdirSync(logdir);
+    }
+// Create a write stream to append to an access.log file
+    const accessLog = fs.createWriteStream( logdir+'access.log', { flags: 'a' })
+// Set up the access logging middleware
+    app.use(morgan('combined', { stream: accessLog }))
 }
 const cors = require('cors')
 app.use(cors())

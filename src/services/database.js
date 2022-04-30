@@ -7,14 +7,14 @@ const db = new Database('log.db');
 
 const stmt = db.prepare(
     `
-    SELECT name FROM sqlite_master WHERE type='table' and name='userinfo';
+    SELECT name FROM sqlite_master WHERE type='table' and name='accesslog';
     `
 );
 let row = stmt.get();
 if (row === undefined){
     console.log('Your database is empty. Initialzing')
     const sqlInit = `
-        CREATE TABLE userinfo (id INTEGER PRIMARY KEY, 
+        CREATE TABLE accesslog (id INTEGER PRIMARY KEY, 
             remoteaddr VARCHAR, 
             remoteuser VARCHAR,
             time VARCHAR,
@@ -27,7 +27,7 @@ if (row === undefined){
             useragent VARCHAR);
     `;
     db.exec(sqlInit);
-    console.log("Database has been initalized with two dummy users")
+    console.log("There is no database, creating a database for you...")
 } else{
     console.log('Database exists')
 }
