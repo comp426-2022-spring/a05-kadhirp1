@@ -110,11 +110,14 @@ function coinFlip() {
       var str = "Error: no input."
       return str
     }
+    
     if (calls != 'heads' && calls != 'tails'){
       var str = "Usage: node guess-flip.js --call=[heads|tails]"
       return str
+    } else {
+      return calls == flips ? {call: calls, flip: flips, result: 'win'}:{call: calls, flip: flips, result: 'lose'};
     }
-    return calls == flips ? {call: calls, flip: flips, result: 'win'}:{call: calls, flip: flips, result: 'lose'};
+    
   }
 
 app.get('/app', (req, res) => {

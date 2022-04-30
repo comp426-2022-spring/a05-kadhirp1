@@ -50,33 +50,30 @@ async function flipCoins(event) {
     
 }
 
+const call = document.getElementById('call');
+
+call.addEventListener("submit", guessFlip);
+async function guessFlip(event) {
+  event.preventDefault();
+  const guessVal = call.elements[0].value;
+  
+  await fetch('http://localhost:5000/app/flip/call/' + guessVal, {mode: 'cors'})
+  .then(function(response){
+    return response.json();
+  }).then(function(json){
+    document.getElementById("choice").innerHTML = "Guess was: " +json.call;
+    document.getElementById("actual").innerHTML = "Actual was: " +json.flip;
+    document.getElementById("results").innerHTML = "Result is: " +json.result;
+
+  })
+}
+
 
 // Enter number and press button to activate coin flip series
 
 // Guess a flip by clicking either heads or tails button
 
 
-async function sendFlips({ url, formData }) {
-  // Extract the form data from the FormData object
-    const plainFormData = Object.fromEntries(formData.entries());
-  // Turn the FormData into JSON
-    const formDataJson = JSON.stringify(plainFormData);
-  // Show the console what is going to be sent in the API message body
-    console.log(formDataJson);
-  // Set up the request object for fetch()
-    const options = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json"
-      },
-      body: formDataJson
-    };
-  // Send the request and wait for the response
-    const response = await fetch(url, options);
-  // Pass the response back to the event handler
-    return response.json()
-  }
 
 
 function homeNav() {
