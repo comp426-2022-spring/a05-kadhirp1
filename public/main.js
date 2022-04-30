@@ -23,6 +23,20 @@ async function flipCoin() {
 // Flip one coin and show coin image to match result when button clicked
 
 // Flip multiple coins and show coin images in table as well as summary results
+const coins = document.getElementById("coins")
+
+coins.addEventListener("submit", flipCoins)
+
+async function flipCoins(event) {
+    event.preventDefault();
+    const value = event.currentTarget;
+    const formVal = coins.elements[0].value;
+    console.log(formVal);
+
+    
+}
+
+
 // Enter number and press button to activate coin flip series
 
 // Guess a flip by clicking either heads or tails button
