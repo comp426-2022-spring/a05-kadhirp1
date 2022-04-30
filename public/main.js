@@ -64,6 +64,7 @@ async function guessFlip(event) {
     document.getElementById("choice").innerHTML = "Guess was: " +json.call;
     document.getElementById("CoinGuessImg").setAttribute("src", "assets/img/" + json.call+ ".png")
     document.getElementById("actual").innerHTML = "Actual was: " +json.flip;
+    document.getElementById("ActualImg").setAttribute("src", "assets/img/" + json.flip+ ".png")
     document.getElementById("results").innerHTML = "Result is: " +json.result;
 
   })
