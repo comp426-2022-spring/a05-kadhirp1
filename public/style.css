@@ -5,6 +5,9 @@ div.hidden {
 div.active {
   background: white;
   color: black;
+  display: inline;
+  border: 5px, #ffc0cb;
+  
 }
 
 img.bigcoin {
@@ -14,4 +17,12 @@ img.bigcoin {
 img.smallcoin {
   width: 50px;
 }
+
+button, input[type="button"], input[type="submit"] { 
+  color:purple; 
+  
+  background: color pink; 
+  border:1px solid; 
+  border-color: #696 #363 #363 #696; 
+} 
 
