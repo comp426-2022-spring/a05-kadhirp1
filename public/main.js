@@ -46,10 +46,11 @@ async function flipCoins(event) {
         let array = json.raw;
         let arrayLength = array.length
         for (let i = 0; i < arrayLength; i++) {
-            text += '<li><img src="assets/img/'+array[i]+'.png" class="bigcoin"></li>';
+            text += '<li><img src="assets/img/'+array[i]+'.png" class="smallcoin"></li>';
         }
-        document.getElementById("ImageResults").innerHTML = text;
-        console.log(json.summary)
+        document.getElementById("ImageResult").innerHTML = text;
+        
+        
         
         console.log(json)
         //coin.disabled = true
