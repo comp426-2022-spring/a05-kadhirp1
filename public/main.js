@@ -42,6 +42,13 @@ async function flipCoins(event) {
         //json here can be anything (not just called)
         document.getElementById("heads").innerHTML = "Heads: " + json.summary.heads;
         document.getElementById("tails").innerHTML = "Tails: " + json.summary.tails;
+        let text = "";
+        let array = json.raw;
+        let arrayLength = array.length
+        for (let i = 0; i < arrayLength; i++) {
+            text += '<li><img src="assets/img/'+array[i]+'.png" class="bigcoin"></li>';
+        }
+        document.getElementById("ImageResults").innerHTML = text;
         console.log(json.summary)
         
         console.log(json)
